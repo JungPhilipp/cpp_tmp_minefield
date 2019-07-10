@@ -1,0 +1,10 @@
+﻿---
+BasedOnStyle: WebKit
+AccessModifierOffset: '0'
+FixNamespaceComments: 'true'
+IndentWidth: '2'
+NamespaceIndentation: Inner
+TabWidth: '2'
+UseTab: Never
+
+...
