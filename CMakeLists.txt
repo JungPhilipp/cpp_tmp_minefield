@@ -14,4 +14,5 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 add_subdirectory(fold_expressions)
 add_subdirectory(expression_templates)
+add_subdirectory(data_structures)
 
