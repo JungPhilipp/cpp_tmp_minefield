@@ -57,6 +57,7 @@ class EXPORT SingleLinkedList {
       current = current->next;
       i++;
     }
+    assert(false);
   }
 
   template <class IterableContainer>

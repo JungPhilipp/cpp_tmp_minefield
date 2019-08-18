@@ -99,4 +99,8 @@ TEST_CASE("kTh last element", "[single_linked_list]")
     REQUIRE(**list.kThLast(2) == 1);
     REQUIRE(**list.kThLast(4) == 5);
   }
+
+  SECTION("Remove middle node")
+  {
+  }
 }

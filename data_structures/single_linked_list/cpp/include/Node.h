@@ -50,7 +50,17 @@ class EXPORT Node {
       current = current->next;
     current->next = new Node { v };
   }
+
   friend class SingleLinkedList<T>;
+};
+
+template <class T>
+auto deleteNode(Node<T>* node) {
+  node->data = node->next->data;
+  auto next = node->next->next;
+  node->next->next = nullptr;
+  delete node->next;
+  node->next = next;
 };
 
 } // namespace data_structures
