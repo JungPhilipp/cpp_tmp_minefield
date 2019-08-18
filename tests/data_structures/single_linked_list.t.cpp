@@ -15,22 +15,30 @@ TEST_CASE("Node", "[single_linked_list]")
   auto node = Node { value };
   REQUIRE(*node == value);
   REQUIRE(node.next == nullptr);
-}
-TEST_CASE("SingleLinkedList", "[single_linked_list]")
-{
-  auto list = SingleLinkedList({ 10., 20., 30. });
-  REQUIRE(list.size() == 3);
-  list.append(40);
-  REQUIRE(list.size() == 4);
-  REQUIRE(list[0] == 10.);
-  REQUIRE(list[3] == 40);
-}
 
-TEST_CASE("SingleLinkedList_append_to_empty", "[single_linked_list]")
-{
-  auto list = SingleLinkedList<double> {};
-  REQUIRE(list.size() == 0);
-  list.append(10);
-  REQUIRE(list.size() == 1);
-  REQUIRE(list[0] == 10);
+  SECTION("SingleLinkedList")
+  {
+    auto list = SingleLinkedList({ 10., 20., 30. });
+    REQUIRE(list.size() == 3);
+    list.append(40);
+    REQUIRE(list.size() == 4);
+    REQUIRE(list[0] == 10.);
+    REQUIRE(list[3] == 40);
+  }
+
+  SECTION("SingleLinkedList_append_to_empty")
+  {
+    auto list = SingleLinkedList<double> {};
+    REQUIRE(list.size() == 0);
+    list.append(10);
+    REQUIRE(list.size() == 1);
+    REQUIRE(list[0] == 10);
+  }
+  SECTION("remove_front")
+  {
+    auto list = SingleLinkedList({ 10, 20, 30, 40 });
+    REQUIRE(list.size() == 4);
+    list.remove(10);
+    REQUIRE(list[0] == 20);
+  }
 }

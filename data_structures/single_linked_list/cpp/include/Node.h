@@ -97,6 +97,19 @@ class EXPORT SingleLinkedList {
       i++;
     }
   }
+
+  auto remove(T const& data) -> void
+  {
+    if (!head)
+      return;
+    if (head->data == data) {
+      auto tmp = head;
+      head = head->next;
+      tmp->next = nullptr;
+      delete tmp;
+      return;
+    }
+  }
 };
 
 } // namespace data_structures
