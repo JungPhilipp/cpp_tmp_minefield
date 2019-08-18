@@ -34,6 +34,11 @@ class EXPORT Node {
     return data;
   }
 
+  auto operator==(Node<T> const& other) const -> bool
+  {
+    return other->data == data;
+  }
+
   Node<T>* next { nullptr };
 
   auto hasNext() const -> bool { return next != nullptr; };
@@ -47,6 +52,5 @@ class EXPORT Node {
   }
   friend class SingleLinkedList<T>;
 };
-
 
 } // namespace data_structures

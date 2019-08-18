@@ -5,6 +5,8 @@
 #pragma once
 #include <Node.h>
 
+#include <unordered_set>
+
 namespace data_structures {
 template <class T>
 class EXPORT SingleLinkedList {
@@ -107,12 +109,12 @@ class EXPORT SingleLinkedList {
     if (not head)
       return;
 
-    std::vector<Node<T>*> unique { head };
+    auto unique = std::unordered_set<T> { head->data };
     auto current = head;
     while (current->hasNext()) {
-      auto found = find_if(unique.begin(), unique.end(), [& d = std::as_const(current->next->data)](auto const& node) { return node->data == d; });
-      if (found == end(unique)) {
-        unique.push_back(current->next);
+      auto found = unique.find(current->next->data) != end(unique);
+      if (not found) {
+        unique.insert(current->data);
         current = current->next;
       } else
         removeNext(current);
@@ -138,14 +140,22 @@ class EXPORT SingleLinkedList {
     }
   }
 
-  auto kThLast(size_t k) -> T& {
+  auto kThLast(size_t k) -> Node<T>*
+  {
     auto current = head;
     auto element = current;
     auto distance = 0;
-    while(distance < k){
-
+    while (distance <= k) {
+      if (not element)
+        return nullptr;
+      element = element->next;
+      distance++;
     }
-
+    while (element) {
+      element = element->next;
+      current = current->next;
+    }
+    return current;
   }
 };
 } // namespace data_structures

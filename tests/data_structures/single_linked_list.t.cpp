@@ -95,9 +95,8 @@ TEST_CASE("kTh last element", "[single_linked_list]")
 
   SECTION("kTh last element")
   {
-    auto element = list.kThLast(0);
-    REQUIRE(list.kThLast(0) == 10);
-    REQUIRE(list.kThLast(2) == 1);
-    REQUIRE(list.kThLast(4) == 5);
+    REQUIRE(**list.kThLast(0) == 10);
+    REQUIRE(**list.kThLast(2) == 1);
+    REQUIRE(**list.kThLast(4) == 5);
   }
 }
